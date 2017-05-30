@@ -1,5 +1,5 @@
 import React from 'react';
-import spdx from 'spdx';
+import parse from 'spdx-expression-parse';
 
 /**
  *
@@ -32,7 +32,7 @@ function render(parsed) {
 
 export function SPDX(expression) {
 	try {
-		var parsed = spdx.parse(expression);
+		const parsed = parse(expression);
 		return render(parsed);
 	}
 	catch (e) {
