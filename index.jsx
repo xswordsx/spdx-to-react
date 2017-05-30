@@ -30,9 +30,9 @@ function render(parsed) {
 	}
 }
 
-export function SPDX(expression) {
+export function SPDX({license}) {
 	try {
-		const parsed = parse(expression);
+		const parsed = parse(license);
 		return render(parsed);
 	}
 	catch (e) {
