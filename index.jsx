@@ -4,9 +4,9 @@ import parse from 'spdx-expression-parse';
 /**
  *
  * @param {SPDX} parsed - An SPDX AST object.
- * @param {function=identity} [mapper] - A mapping function for the `license` value.
+ * @param {function} [mapper=identity] - A mapping function for the `license` value.
  * Defaults to `identity`.
- * @return {[*]}
+ * @return {Array}
  */
 function render(parsed, mapper = _identity) {
 	if (parsed.license) {
@@ -35,7 +35,7 @@ function render(parsed, mapper = _identity) {
  *
  * @param {*} list - Array to be flattened. If `list` is not an array,
  * the value is returned unchanged.
- * @return {[*]}
+ * @return {Array}
  */
 function flatten(list) {
 	if (!Array.isArray(list)) {
@@ -58,10 +58,10 @@ function _reactMapper(x) {
 }
 
 /**
- * Returns an array of a broken-down SPDX expression with licenses wrapped in `<a>` tags.
+ * Returns an array of a broken-down SPDX expression with licenses wrapped in 'a' tags.
  * @param {String} license - An SPDX-compliant string. If `license` is not a
  * valid SPDX expression, [] is returned.
- * @return {[*]}
+ * @return {Array}
  */
 function spdx(license) {
 	try {
