@@ -1,0 +1,4 @@
+# Everything except index.jsx and package.json
+*
+!*.jsx
+!package.json
