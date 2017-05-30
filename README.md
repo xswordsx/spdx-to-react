@@ -32,7 +32,12 @@ Constructs English disjunctions for multilicensing expressions:
 
 ```javascript
 spdxReact('(MPL-2.0 OR GPL-2.0+)')
-// => [<a href="http://spdx.org/licenses/MPL-2.0">MPL-2.0</a>, ' or ', <a href="http://spdx.org/licenses/GPL-2.0">GPL-2.0</a>, 'or newer']
+// => [
+//      <a href="http://spdx.org/licenses/MPL-2.0">MPL-2.0</a>,
+//      ' or ',
+//      <a href="http://spdx.org/licenses/GPL-2.0">GPL-2.0</a>,
+//      'or newer'
+// ]
 ```
 
 Describes ranges and exceptions:
@@ -40,4 +45,13 @@ Describes ranges and exceptions:
 ```javascript
 spdxReact('(GPL-2.0+ WITH Bison-exception-2.2)')
 // => [<a href="http://spdx.org/licenses/GPL-2.0">GPL-2.0</a>, ' or newer', ' with Bison-exception-2.2']
+```
+
+## Mapping to other values
+You could also map this to other values, by passing a mapping function.
+By default, the mapping function is `<a href="spdx.org/licenses/${VALUE}>${VALUE}</a>`
+
+```jsx
+spdxReact('MIT', x => <b>${x.toLowerCase()}</b>);
+// => [<b>mit</b>]
 ```

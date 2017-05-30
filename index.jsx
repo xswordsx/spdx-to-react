@@ -61,12 +61,13 @@ function _reactMapper(x) {
  * Returns an array of a broken-down SPDX expression with licenses wrapped in 'a' tags.
  * @param {String} license - An SPDX-compliant string. If `license` is not a
  * valid SPDX expression, [] is returned.
+ * @param {function} [mapper=React 'a' tag] - A mapping function for the `license` value.
  * @return {Array}
  */
-function spdx(license) {
+function spdx(license, mapper = _reactMapper) {
 	try {
 		const parsed = parse(license);
-		return flatten(render(parsed, _reactMapper));
+		return flatten(render(parsed, mapper));
 	}
 	catch (e) {
 		return [];
