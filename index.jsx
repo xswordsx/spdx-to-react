@@ -3,19 +3,19 @@ import parse from 'spdx-expression-parse';
 
 /**
  *
- * @param {SPDX} parsed
- * @return {*}
+ * @param {SPDX} parsed - An SPDX AST object.
+ * @param {function=identity} [mapper] - A mapping function for the `license` value.
+ * Defaults to `identity`.
+ * @return {[*]}
  */
-function render(parsed) {
+function render(parsed, mapper = _identity) {
 	if (parsed.license) {
 		if (parsed.license.indexOf('LicenseRef') > -1) {
-			return <div>License Reference "{parsed.license}"</div>;
+			return ['License Reference "' + parsed.license + '"'];
 		}
 		else {
 			return [
-				<a href={'http://spdx.org/licenses/' + parsed.license}>
-					{parsed.license}
-				</a>,
+				mapper(parsed.license),
 				( parsed.plus ? ' or newer' : null ),
 				( parsed.exception ? ' with ' + parsed.exception : null )
 			];
@@ -23,23 +23,57 @@ function render(parsed) {
 	}
 	else {
 		return [
-			render(parsed.left),
-			parsed.conjunction,
-			render(parsed.right)
+			render(parsed.left, mapper),
+			' ' + parsed.conjunction + ' ',
+			render(parsed.right, mapper)
 		];
 	}
 }
 
-export function SPDX({license}) {
+/**
+ * Flattens an array
+ *
+ * @param {*} list - Array to be flattened. If `list` is not an array,
+ * the value is returned unchanged.
+ * @return {[*]}
+ */
+function flatten(list) {
+	if (!Array.isArray(list)) {
+		return list;
+	}
+	return list.reduce(function (flattenedList, item) {
+		if (Array.isArray(item)) {
+			return flattenedList.concat(flatten(item));
+		}
+		return flattenedList.concat(item);
+	}, []);
+}
+
+function _identity(x) {
+	return x;
+}
+
+function _reactMapper(x) {
+	return <a href={`https://spdx.org/licenses/${x}`}>{x}</a>;
+}
+
+/**
+ * Returns an array of a broken-down SPDX expression with licenses wrapped in `<a>` tags.
+ * @param {String} license - An SPDX-compliant string. If `license` is not a
+ * valid SPDX expression, [] is returned.
+ * @return {[*]}
+ */
+function spdx(license) {
 	try {
 		const parsed = parse(license);
-		return render(parsed);
+		return flatten(render(parsed, _reactMapper));
 	}
 	catch (e) {
-		return null;
+		return [];
 	}
 }
 
+export default spdx;
 /**
  * The structure of an SPDX AST
  * @typedef SPDX {Object}
