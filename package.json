@@ -1,0 +1,23 @@
+{
+  "name": "spdx-to-react",
+  "version": "1.0.0",
+  "description": "Returns a React element from an SPDX expression",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xswordsx/spdx-to-react.git"
+  },
+  "keywords": [
+    "spdx",
+    "react"
+  ],
+  "author": "Ivan Latunov <xswordsx@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xswordsx/spdx-to-react/issues"
+  },
+  "homepage": "https://github.com/xswordsx/spdx-to-react#readme"
+}
