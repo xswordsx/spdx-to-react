@@ -54,7 +54,7 @@ function _identity(x) {
 }
 
 function _reactMapper(x) {
-	return <a href={`https://spdx.org/licenses/${x}`}>{x}</a>;
+	return React.createElement('a', { href: `https://spdx.org/licenses/${x}` }, [x]);
 }
 
 /**
