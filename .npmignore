@@ -1,5 +1,6 @@
 # Everything except index.jsx and package.json
 *
+!README.md
 !*.jsx
 !package.json
 !dist/*.js
