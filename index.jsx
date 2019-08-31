@@ -8,7 +8,7 @@ import parse from 'spdx-expression-parse';
  * Defaults to `identity`.
  * @return {Array}
  */
-function render(parsed, mapper = _identity) {
+function render(parsed, mapper) {
 	if (parsed.license) {
 		if (parsed.license.indexOf('LicenseRef') > -1) {
 			return ['License Reference "' + parsed.license + '"'];
@@ -42,15 +42,8 @@ function flatten(list) {
 		return list;
 	}
 	return list.reduce(function (flattenedList, item) {
-		if (Array.isArray(item)) {
-			return flattenedList.concat(flatten(item));
-		}
-		return flattenedList.concat(item);
+		return flattenedList.concat(flatten(item));
 	}, []);
-}
-
-function _identity(x) {
-	return x;
 }
 
 function _reactMapper(x) {
