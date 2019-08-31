@@ -2,6 +2,7 @@ spdx-to-react
 ==============
 
 [![Build Status](https://travis-ci.org/xswordsx/spdx-to-react.svg?branch=master)](https://travis-ci.org/xswordsx/spdx-to-react)
+[![Coverage Status](https://coveralls.io/repos/github/xswordsx/spdx-to-react/badge.svg?branch=master)](https://coveralls.io/github/xswordsx/spdx-to-react?branch=master)
 
 A port of [kemitchell](https://github.com/kemitchell)'s [spdx-to-html](https://github.com/kemitchell/spdx-to-html.js)
 
