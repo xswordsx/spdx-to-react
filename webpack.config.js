@@ -1,29 +1,24 @@
-const path = require('path');
-
 module.exports = {
 	entry: './index.jsx',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'spdx-to-react.js'
+		library: 'spdx-to-react',
+		libraryTarget: 'umd',
+		filename: 'spdx-to-react.js',
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
-				query: {
-					presets: [
-						'es2015',
-						'react'
-					],
-				}
-			}
-		]
+				use: {
+					loader: "babel-loader",
+				},
+			},
+		],
 	},
 	externals: {
-		// This is here because webpack tries to resolve a dev dependency which
-		// requires 'fs'
-		fs: 'fs'
-	}
+		// This is here because webpack tries to resolve a dev
+		// dependency which requires 'fs'
+		fs: 'fs',
+	},
 };
