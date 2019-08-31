@@ -1,8 +1,16 @@
 # Everything except index.jsx and package.json
 *
+
+# README
 !README.md
+
+# Sources
 !*.jsx
+
+# Package defitions
 !package.json
+!package-lock.json
+
+# Built library
 !dist/*.js
-!yarn.lock
-!webpack.config.js
+
