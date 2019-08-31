@@ -1,6 +1,6 @@
 {
   "name": "spdx-to-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A port of kemitchell's `spdx-to-html.js`",
   "main": "dist/spdx-to-react.js",
   "scripts": {
