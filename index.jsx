@@ -67,7 +67,7 @@ function _reactMapper(x) {
 function spdx(license, mapper = _reactMapper) {
 	try {
 		const parsed = parse(license);
-		return flatten(render(parsed, mapper));
+		return flatten(render(parsed, mapper)).filter(x => x != null);
 	}
 	catch (e) {
 		return [];
