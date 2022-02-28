@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/xswordsx/spdx-to-react#readme",
   "dependencies": {
-    "react": "*",
     "spdx-expression-parse": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
