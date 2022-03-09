@@ -57,5 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-# webpack build folder
+# babel build folder
 dist/

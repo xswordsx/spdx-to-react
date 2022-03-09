@@ -47,7 +47,7 @@ function flatten(list) {
 }
 
 function _reactMapper(x) {
-	return <a href={`https://spdx.org/licenses/${x}`}>{x}</a>;
+	return React.createElement('a', { href: `https://spdx.org/licenses/${x}` }, x);
 }
 
 /**
@@ -70,7 +70,7 @@ function spdx(license, mapper = _reactMapper) {
 export default spdx;
 /**
  * The structure of an SPDX AST
- * @typedef SPDX {Object}
+ * @typedef {Object} SPDX
  *
  * @property {String} [license]
  * @property {SPDX} [left] - Present in complex expressions only.

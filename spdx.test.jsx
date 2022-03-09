@@ -6,7 +6,7 @@ describe('SPDX-to-React', function() {
 		const licenseName = 'MIT';
 		it('returns a link to the licnense', function() {
 			expect(spdx(licenseName)).toStrictEqual([
-				<a href={`https://spdx.org/licenses/${licenseName}`}>{licenseName}</a>
+				React.createElement('a', { href: `https://spdx.org/licenses/${licenseName}` }, licenseName)
 			]);
 		});
 	});
@@ -24,10 +24,10 @@ describe('SPDX-to-React', function() {
 		const license = 'MIT+ OR BSD-4-Clause';
 		it('splits it into multiple licenses', function() {
 			expect(spdx(license)).toStrictEqual([
-				<a href="https://spdx.org/licenses/MIT">MIT</a>,
+				React.createElement('a', { href: "https://spdx.org/licenses/MIT" }, 'MIT'),
 				' or newer',
 				' or ',
-				<a href="https://spdx.org/licenses/BSD-4-Clause">BSD-4-Clause</a>,
+				React.createElement('a', { href: "https://spdx.org/licenses/BSD-4-Clause" }, 'BSD-4-Clause'),
 			]);
 		});
 	});
